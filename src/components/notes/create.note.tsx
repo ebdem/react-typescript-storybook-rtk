@@ -7,6 +7,7 @@ import { LoadingButton } from "../LoadingButton";
 import { toast } from "react-toastify";
 import NProgress from "nprogress";
 import StyledInput from "../Input";
+import { StyledButton } from "../Button" ;
 import { useCreateNoteMutation } from "../../redux/noteAPI";
 
 type ICreateNoteProps = {
@@ -115,7 +116,7 @@ const CreateNote: FC<ICreateNoteProps> = ({ setOpenNoteModal }) => {
                         {errors.content && errors.content.message}
                     </p>
                 </div>
-                <LoadingButton loading={false}>Create Note</LoadingButton>
+                <StyledButton width="120px" height="80px" size="small" backgroundColor="violet" type="submit" loading={false}>Create Note</StyledButton>
             </form>
         </section>
     );

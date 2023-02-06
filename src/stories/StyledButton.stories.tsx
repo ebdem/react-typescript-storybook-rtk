@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { StyledButton } from './StyledButton';
+import { StyledButton } from '../components/Button';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -13,6 +13,12 @@ export default {
     borderColor: { control: 'color' },
     padding: { control: 'text' },
     width: { control: 'text' },
+    type:{
+      control: {
+        type: 'select',
+        options: ['button', 'submit', 'reset'],
+      }
+    },
     size:{
       control: {
         type: 'select',

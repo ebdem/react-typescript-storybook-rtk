@@ -15,7 +15,10 @@ const StyledButtonn = styled.button<{
   padding: ${(props) => props.padding || "0"};
   width: ${(props) => props.width || "0"};
   height: ${(props) => props.height || "0"};
-  border: ${(props) =>props.borderColor ? `2px solid ${props.borderColor}` : "none"};
+  border: ${(props) =>
+    props.borderColor ? `2px solid ${props.borderColor}` : "none"};
+    cursor: pointer;
+    border-radius: 7px;
 `;
 
 interface ButtonProps {
@@ -34,7 +37,7 @@ interface ButtonProps {
   /**
    * Button contents
    */
-  label: string;
+  label?: string;
   /**
    * Optional click handler
    */
@@ -46,6 +49,9 @@ interface ButtonProps {
   padding?: string;
   width?: string;
   height?: string;
+  loading?: boolean;
+  children?: React.ReactNode;
+  type?: "button" | "submit" | "reset";
 }
 
 /**
@@ -57,20 +63,20 @@ export const StyledButton = ({
   backgroundColor,
   label,
   borderColor,
+  children,
+  loading = false,
+  type = "button",
   ...props
 }: ButtonProps) => {
   return (
     <StyledButtonn
-      type="button"
+      type={type}
       color={primary ? "red" : "blue"}
       style={{ backgroundColor }}
-      width={size === "small" ? "100px" : size === "medium" ? "200px" : "300px"}
-      height={size === "small" ? "50px" : size === "medium" ? "100px" : "150px"}
-      padding={size === "small" ? "10px" : size === "medium" ? "20px" : "30px"}
       borderColor={borderColor}
       {...props}
     >
-      {label}
+      {loading ? <div>Loading...</div> : children}
     </StyledButtonn>
   );
 };
