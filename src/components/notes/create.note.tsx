@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoadingButton } from "../LoadingButton";
 import { toast } from "react-toastify";
 import NProgress from "nprogress";
+import StyledInput from "../Input";
 import { useCreateNoteMutation } from "../../redux/noteAPI";
 
 type ICreateNoteProps = {
@@ -80,12 +81,9 @@ const CreateNote: FC<ICreateNoteProps> = ({ setOpenNoteModal }) => {
                     <label className="block text-gray-700 text-lg mb-2" htmlFor="title">
                         Title
                     </label>
-                    <input
-                        className={twMerge(
-                            `appearance-none border border-gray-400 rounded w-full py-3 px-3 text-gray-700 mb-2  leading-tight focus:outline-none`,
-                            `${errors["title"] && "border-red-500"}`
-                        )}
-                        {...methods.register("title")}
+                    <StyledInput
+                        type="text"
+                        {...register("title")}
                     />
                     <p
                         className={twMerge(
