@@ -13,6 +13,7 @@ export default {
     borderColor: { control: 'color' },
     padding: { control: 'text' },
     width: { control: 'text' },
+    children: { control: 'text' },
     type:{
       control: {
         type: 'select',
